@@ -1,0 +1,514 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<title>Money Transfer</title>
+<head>
+  <div class="nav">
+    <input type="checkbox" id="nav-check">
+    <div class="nav-header">
+      <div class="nav-title">
+        <img class="i" src="{% static 'images/logo.jpg' %}">
+        
+      </div>
+    </div>
+    <div class="nav-btn">
+      <label for="nav-check">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+    </div>
+    
+    <div class="nav-links">
+      <a href='/home' >Home</a>
+      <a href="/tp" >Customers</a>
+      <a href="/history" >Transactions</a>
+      
+    </div>
+  </div>
+</head>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  padding-left: 5%;
+  padding-right: 5%;
+  
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  color: #384047;
+}
+
+form {
+
+  margin: 10px auto;
+  padding: 10px 20px;
+  background: black;
+  border-radius: 8px;
+  color: #e8eeef;
+  
+}
+
+h1 {
+  margin: 0 0 30px 0;
+  text-align: center;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="datetime"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+textarea,
+select {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  font-size: 16px;
+  height: auto;
+  margin: 0;
+  outline: 0;
+  padding: 15px;
+  width: 100%;
+  background-color: #e8eeef;
+  color: black;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+  margin-bottom: 30px;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  margin: 0 4px 8px 0;
+}
+
+select {
+  padding: 6px;
+  height: 40px;
+  border-radius: 2px;
+}
+
+button {
+  padding: 19px 39px 18px 39px;
+  color: #FFF;
+  background-color:	rgb(0, 128, 255);
+  font-size: 18px;
+  text-align: center;
+  font-style: normal;
+  border-radius: 5px;
+  width: 100%;
+  border: 1px solid rgb(0, 128, 255);
+  border-width: 1px 1px 3px;
+  box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.1) inset;
+  margin-bottom: 10px;
+}
+
+fieldset {
+  margin-bottom: 30px;
+  border: none;
+}
+
+legend {
+  font-size: 1.4em;
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+label.light {
+  font-weight: 300;
+  display: inline;
+}
+
+.number {
+  background-color:rgb(0, 128, 255);
+  color: #fff;
+  height: 30px;
+  width: 30px;
+  display: inline-block;
+  font-size: 0.8em;
+  margin-right: 4px;
+  line-height: 30px;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+  border-radius: 100%;
+}
+
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 100%;
+    border-radius: 8px;
+    color: white;
+    background-color: black;
+    border-right-color: yellow;
+  }
+  
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+  img {
+    border-radius: 5px 5px 0 0;
+  }
+  
+  .container {
+    padding: 2px 16px;
+    
+  }
+  .h{
+      padding-top: 2%;
+  }
+  .center{
+    text-align: center;
+  }
+
+  /*navbar*/
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0px;
+    font-family: 'segoe ui';
+  }
+  
+  .nav {
+    
+    height: 50px;
+    width: 100%;
+    background-color: black;
+    position: relative;
+  }
+  
+  .nav > .nav-header {
+    display: inline;
+  }
+  
+  .nav > .nav-header > .nav-title {
+    display: inline-block;
+    font-size: 22px;
+    color: white;
+    padding: 10px 10px 10px 10px;
+  }
+  
+  .nav > .nav-btn {
+    display: none;
+  }
+  
+  .nav > .nav-links {
+    display: inline;
+    float: right;
+    font-size: 18px;
+    padding-right: 3%;
+  }
+  
+  .nav > .nav-links > a {
+    display: inline-block;
+    padding: 13px 10px 13px 10px;
+    text-decoration: none;
+    color: lightblue;
+  }
+  
+  .nav > .nav-links > a:hover {
+    background-color: #113238;
+  }
+  
+  .nav > #nav-check {
+    display: none;
+  }
+  
+  @media (max-width:600px) {
+    .nav > .nav-btn {
+      display: inline-block;
+      position: absolute;
+      right: 0px;
+      top: 0px;
+    }
+    .nav > .nav-btn > label {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      padding: 13px;
+    }
+    .nav > .nav-btn > label:hover,.nav  #nav-check:checked ~ .nav-btn > label {
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+    .nav > .nav-btn > label > span {
+      display: block;
+      width: 25px;
+      height: 10px;
+      border-top: 2px solid #eee;
+    }
+    .nav > .nav-links {
+      position: absolute;
+      display: block;
+      width: 100%;
+      background-color: #333;
+      height: 0px;
+      transition: all 0.3s ease-in;
+      overflow-y: hidden;
+      top: 50px;
+      left: 0px;
+    }
+    .nav > .nav-links > a {
+      display: block;
+      width: 100%;
+    }
+    .nav > #nav-check:not(:checked) ~ .nav-links {
+      height: 0px;
+    }
+    .nav > #nav-check:checked ~ .nav-links {
+      height: calc(100vh - 50px);
+      overflow-y: auto;
+    }
+  }
+  .i{
+    width:40px;
+    margin-left: 35px;
+    
+  }
+  .last{
+    text-align: center;
+    background-color: black;
+    color: white;
+    font-family:sans-serif;
+    bottom: 0%;
+    width: 100%;
+   
+  }
+  .text{
+    font-size: 30px;
+    
+    padding-top: 20px;
+  }
+  .z{
+    color: whitesmoke;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    text-align: left;
+  }
+  .fa {
+    padding-top: 0;
+    font-size: 30px;
+    width: 30px;
+    text-align: center;
+    text-decoration: none;
+    margin: 2px;
+    border-radius: 50%;
+  }
+  
+  .fa:hover {
+      opacity: 0.7;
+      color: whitesmoke;
+  }
+  
+  .fa-facebook {
+    padding-right: 20px;
+    
+    color: #3B5998;
+  }
+  
+  .fa-twitter {
+    padding-left: 0;
+    
+    color: #55ACEE;
+  }
+  .fa-linkedin {
+    padding-left: 6px;
+    padding-right: 5px;
+    color: #007bb5;
+  }
+  .fa-instagram {
+    padding-left: 9px;
+    color: #ea4c89;
+  }
+  
+  
+</style>
+
+</head>
+
+
+
+<body style="background-image:url(/static/images/bg1.jpg);">
+
+<h2 style="color: white; text-align:center;font-size:25px">MONEY TRANSFER</h2>
+<div class="row">
+  <div class="column">
+    <div class="card">
+  
+        <div class="container">
+            <h1 class="h">SEND ₹</h1>
+            <legend><span class="number">1</span> Sender Details </legend>
+        
+        <div class="">{% for s in data %}  
+          <h3 style="color: #2DD4E6;">Account No : {{ s.acc_no}}
+              <br>
+              <br>
+
+             Name : {{ s.name}}
+             <br>
+              <br>
+             Email : {{ s.email}}
+             <br>
+              <br>
+             Phone : {{ s.phone}}
+             <br>
+              <br>
+             Balance : ₹ {{ s.balance}}
+             <br>
+              <br>
+          </h3> 
+          {% endfor %}
+        </div>
+        </div>
+      </div>
+  </div>
+  <div class="column" >
+    <form action="" method="POST">
+          
+        {% csrf_token%}
+        <h1> RECIEVE ₹ </h1>
+    
+        
+      
+          <legend><span class="number">2</span> Reciever Details </legend>
+          <br>
+          <label for="rec">Recepient</label>
+          <select id="reciever_id" name="reciever" required>
+                  <option value="" disabled selected>Select Recepient</option>
+                  {% for s in all %}
+                      <option value={{s.acc_no}}> {{s.acc_no}} - {{s.name}}  [Balance:₹{{s.balance}}] </option>
+                  {% endfor%}                       
+                  </select>
+
+            <label for="amount">Amount:</label>
+            <input type="number" id="amt_id" name="amt" min="1" step="any" placeholder="Enter Amount" required>
+      
+           <button type="submit">Transfer</button>
+        
+       
+                            {% if invalid_account_name %}
+                            <script>
+                                swal({
+                                    icon: 'error',
+                                    title: 'Oops',
+                                    text: "Receiver's Name Incorrect",
+
+                                });
+                            </script>
+                            {% endif %}
+
+                            {% if sameuser %}
+                            <script>
+                                swal({
+                                    icon: 'error',
+                                    title: 'Sorry',
+                                    text: "Cannot transfer amount to same account",
+                                    button: 'Try Again',
+
+                                });
+                            </script>
+                            {% endif %}
+                            
+                           
+
+                            {% if invalid_account %}
+                            <script>
+                                swal({
+                                    icon: 'error',
+                                    title: 'Error',
+                                    text: "Receiver's Account Number does not exit",
+
+                                });
+                            </script>
+                            {% endif %}
+                            
+
+                            {% if insufficientbalance %}
+                            <script>
+                                swal({
+                                    icon: 'info',
+                                    title: 'Sorry',
+                                    text: "Insufficient Balance",
+                                    button: 'Try Again',
+
+                                });
+                            </script>
+                            {% endif %}
+
+                            {% if success %}
+                            <script>
+                                swal({
+                                    icon: 'success',
+                                    title: 'Payment Successful',
+
+
+                                });
+                            </script>
+                            {% endif %}
+
+                            <script>
+                              if (window.history.replaceState) {
+                                  window.history.replaceState(null, null, window.location.href);
+                              }
+                          </script>
+      
+    </form>
+  </div>
+</div>
+
+<div class="last">
+  <h2 class="text">Follow Us</h2>
+    <a href="#" class="fa fa-facebook"></a>
+    <a href="#" class="fa fa-twitter"></a>
+    <a href="#" class="fa fa-linkedin"></a>
+    <a href="#" class="fa fa-instagram"></a>
+    <div class="z">@ Copyright Joel Ayappa</div>
+  </div>
+
+</body>
+</html>
