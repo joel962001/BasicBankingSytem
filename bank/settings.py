@@ -78,16 +78,16 @@ WSGI_APPLICATION = 'bank.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'd3nrdr6587acmh',
-#         'USER': 'udejroksagtrin',
-#         'PASSWORD': '599b9072e3e37d918717e58149524de754dbc484288c1a5be0bef1458b41102b',
-#         'HOST': 'ec2-52-4-100-65.compute-1.amazonaws.com',
-#         'PORT': '5432',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd3nrdr6587acmh',
+        'USER': 'udejroksagtrin',
+        'PASSWORD': '599b9072e3e37d918717e58149524de754dbc484288c1a5be0bef1458b41102b',
+        'HOST': 'ec2-52-4-100-65.compute-1.amazonaws.com',
+        'PORT': '5432',
+    }
+}
 
 db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES['default'].update(db_from_env)
